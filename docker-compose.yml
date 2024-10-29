@@ -1,9 +1,9 @@
 services:
-  html_to_pdf_printer_client_app:
+  html_to_pdf_printer_client_app_legacy:
     build:
       context: .
       dockerfile: ./Docker/Dockerfile
-    container_name: html_to_pdf_printer_client_app
+    container_name: html_to_pdf_printer_client_app_legacy
     volumes:
       - .:/app
       - ./vendor:/app/vendor
@@ -15,11 +15,11 @@ services:
       composer install --no-dev \
       && bash" 
 
-  html_to_pdf_printer_client_test:
+  html_to_pdf_printer_client_test_legacy:
     build:
       context: .
       dockerfile: ./Docker/Dockerfile
-    container_name: html_to_pdf_printer_client_test
+    container_name: html_to_pdf_printer_client_test_legacy
     volumes:
       - .:/app
       - ./test_vendor:/app/vendor
@@ -30,4 +30,4 @@ services:
       composer install && \
       vendor/bin/phpunit test/"
     depends_on:
-      - html_to_pdf_printer_client_app
+      - html_to_pdf_printer_client_app_legacy
