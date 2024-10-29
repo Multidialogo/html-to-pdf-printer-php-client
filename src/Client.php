@@ -8,11 +8,11 @@ use stdClass;
 
 class Client
 {
-    private const HTML_TO_PDF_ENDPOINT = '/convert';
+    const HTML_TO_PDF_ENDPOINT = '/convert';
 
-    private GuzzleHttpClient $client;
+    private $client;
 
-    public function __construct(string $baseUri)
+    public function __construct($baseUri)
     {
         $this->client = new GuzzleHttpClient(['base_uri' => $baseUri]);
     }
@@ -23,8 +23,8 @@ class Client
     }
 
     public function getHtmlAsPdfStream(
-        string $callerService,
-        string $htmlBody
+        $callerService,
+        $htmlBody
     )
     {
         $requestPayload = new stdClass();

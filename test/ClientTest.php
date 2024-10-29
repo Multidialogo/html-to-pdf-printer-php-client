@@ -2,16 +2,14 @@
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use MultiDialogo\HtmlToPdfPrinterPhpClient\Client;
-use PHPUnit\Framework\TestCase;
 
-class ClientTest extends TestCase
+class ClientTest extends PHPUnit_Framework_TestCase
 {
-    private GuzzleClient $guzzleClientMock;
-
-    private Client $client;
+    private $guzzleClientMock;
+    
+    private $client;
 
     public function testGetHtmlAsPdfStreamSuccess()
     {
@@ -27,10 +25,11 @@ class ClientTest extends TestCase
             ]
         ])));
 
+        // Create the file for testing
         touch($filePath);
         $stream = $this->client->getHtmlAsPdfStream($callerService, $htmlBody);
 
-        $this->assertIsResource($stream);
+        $this->assertTrue(is_resource($stream)); // Use is_resource() instead of assertIsResource()
         fclose($stream);
     }
 
@@ -49,8 +48,7 @@ class ClientTest extends TestCase
             ]
         ])));
 
-        $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage("Missing file @ {$filePath}");
+        $this->setExpectedException('RuntimeException', "Missing file @ {$filePath}"); // Change to setExpectedException
 
         $this->client->getHtmlAsPdfStream($callerService, $htmlBody);
     }
@@ -61,10 +59,9 @@ class ClientTest extends TestCase
         $callerService = 'TestService';
 
         $this->guzzleClientMock->method('post')
-            ->willThrowException(new RequestException("Error during request", new Request('POST', 'test')));
+            ->will($this->throwException(new RequestException("Error during request", new \GuzzleHttp\Psr7\Request('POST', 'test')))); // Use throwException
 
-        $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage("Error during request");
+        $this->setExpectedException('RuntimeException', "Error during request"); // Change to setExpectedException
 
         $this->client->getHtmlAsPdfStream($callerService, $htmlBody);
     }
