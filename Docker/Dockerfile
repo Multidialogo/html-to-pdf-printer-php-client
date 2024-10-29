@@ -17,12 +17,10 @@ RUN apt-get update && \
     docker-php-ext-configure zip --with-libzip && \
     docker-php-ext-install zip
 
-# Install Composer
 RUN curl -sS https://getcomposer.org/installer -o composer-installer.php && \
     php composer-installer.php --install-dir=/usr/local/bin --filename=composer && \
     rm composer-installer.php
 
-# Check Composer installation and its version
 RUN if [ -f /usr/local/bin/composer ]; then \
         echo "Composer installed successfully!"; \
         /usr/local/bin/composer --version; \
@@ -31,5 +29,4 @@ RUN if [ -f /usr/local/bin/composer ]; then \
         exit 1; \
     fi
 
-# Set the PATH environment variable explicitly
 ENV PATH="/usr/local/bin:$PATH"
