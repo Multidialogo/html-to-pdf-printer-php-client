@@ -1,4 +1,3 @@
-
 # HTML to PDF Printer PHP Client
 
 **HTML to PDF Printer PHP Client** is a PHP SDK designed for interacting with the [HTML to PDF Printer service](https://github.com/Multidialogo/html-to-pdf-printer). This library simplifies the process of converting HTML content into PDF documents through a RESTful API, allowing developers to integrate PDF generation seamlessly into their applications.
