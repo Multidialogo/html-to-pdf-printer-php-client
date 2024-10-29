@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: ./Docker/Dockerfile
     container_name: html_to_pdf_printer_client_test
-    image: html-to-pdf-printer-client-test
+    image: html-to-pdf-printer-client-test-legacy
     volumes:
       - .:/app
     working_dir: /app

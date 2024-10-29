@@ -2,7 +2,6 @@
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use MultiDialogo\HtmlToPdfPrinterPhpClient\Client;
 use PHPUnit_Framework_TestCase;
@@ -10,6 +9,7 @@ use PHPUnit_Framework_TestCase;
 class ClientTest extends PHPUnit_Framework_TestCase
 {
     private $guzzleClientMock;
+
     private $client;
 
     public function testGetHtmlAsPdfStreamSuccess()

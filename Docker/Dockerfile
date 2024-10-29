@@ -30,3 +30,5 @@ RUN if [ -f /usr/local/bin/composer ]; then \
     fi
 
 ENV PATH="/usr/local/bin:$PATH"
+
+RUN git config --global --add safe.directory /app
