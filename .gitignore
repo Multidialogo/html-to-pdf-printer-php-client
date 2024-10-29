@@ -1,0 +1,4 @@
+composer.lock
+composer.test.lock
+vendor
+test_vendor
