@@ -107,7 +107,7 @@ Contributions are welcome! To contribute:
 ### Launch tests (local provisioning)
 
 ```bash
-docker compose run --rm html_to_pdf_printer_client_test
+docker compose run --rm test
 ```
 
 Please ensure your code follows coding standards and passes any existing tests.
