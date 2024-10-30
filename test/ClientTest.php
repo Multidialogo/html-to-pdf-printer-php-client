@@ -1,5 +1,7 @@
 <?php
 
+namespace MultiDialogo\HtmlToPdfPrinterPhpClient\Tests;
+
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Response;
@@ -67,9 +69,11 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->client->getHtmlAsPdfStream($callerService, $htmlBody);
     }
 
-    protected function setUp(): void
+    protected function setUp()
     {
-        $this->guzzleClientMock = $this->createMock(GuzzleClient::class);
+        $this->guzzleClientMock = $this->getMockBuilder(GuzzleClient::class) // Updated mock creation for PHPUnit 4.8
+            ->disableOriginalConstructor()
+                ->getMock();
 
         $this->client = new Client('https://api.example.com');
         $this->client->setClient($this->guzzleClientMock);

@@ -106,7 +106,6 @@ Contributions are welcome! To contribute:
 ### Launch tests (local provisioning)
 
 ```bash
-<<<<<<< HEAD
 docker compose run --rm test
 ```
 
