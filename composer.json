@@ -3,6 +3,7 @@
   "description": "Client for the html to pdf service.",
   "type": "library",
   "require": {
+    "ext-json": "^1.2",
     "guzzlehttp/guzzle": "^6.3"
   },
   "require-dev": {
