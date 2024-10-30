@@ -5,3 +5,6 @@ RUN apt-get update && \
     docker-php-ext-install zip
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+WORKDIR /app
+RUN git config --global --add safe.directory /app

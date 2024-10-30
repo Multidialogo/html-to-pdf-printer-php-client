@@ -1,33 +1,14 @@
 services:
-  html_to_pdf_printer_client_app:
-    build:
-      context: .
-      dockerfile: ./Docker/Dockerfile
-    container_name: html_to_pdf_printer_client_app
-    volumes:
-      - .:/app
-      - ./vendor:/app/vendor
-      - ./composer.lock:/app/composer.lock
-    working_dir: /app
-    tty: true
-    command: |
-      sh -c "
-      composer install --no-dev \
-      && bash" 
-
-  html_to_pdf_printer_client_test:
+  test:
     build:
       context: .
       dockerfile: ./Docker/Dockerfile
     container_name: html_to_pdf_printer_client_test
+    image: html-to-pdf-printer-client-test
     volumes:
       - .:/app
-      - ./test_vendor:/app/vendor
-      - ./composer.test.lock:/app/composer.lock
     working_dir: /app
     command: |
       sh -c "
       composer install && \
       vendor/bin/phpunit test/"
-    depends_on:
-      - html_to_pdf_printer_client_app
