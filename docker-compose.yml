@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: ./Docker/Dockerfile
+      args:
+        WORKDIR_PATH: '/app'
     container_name: html_to_pdf_printer_client_test
     image: html-to-pdf-printer-client-test-legacy
     volumes:

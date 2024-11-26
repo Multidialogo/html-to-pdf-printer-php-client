@@ -8,7 +8,7 @@ use stdClass;
 
 class Client
 {
-    const HTML_TO_PDF_ENDPOINT = '/convert';
+    const HTML_TO_PDF_ENDPOINT = '/download';
 
     private $client;
 
@@ -38,7 +38,7 @@ class Client
                 'json' => $requestPayload,
                 'headers' => [
                     'X-caller-service' => $callerService,
-                    'Accept' => 'application/pdf',
+                    'Accept' => 'application/json',
                     'Content-Type' => 'application/json',
                 ]
             ]

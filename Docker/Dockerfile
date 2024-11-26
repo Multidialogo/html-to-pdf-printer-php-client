@@ -1,5 +1,7 @@
 FROM php:5.5-cli
 
+ARG WORKDIR_PATH=/app
+
 RUN sed -i 's|httpredir.debian.org/debian|archive.debian.org/debian|g' /etc/apt/sources.list && \
     sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list && \
     sed -i '/jessie-updates/d' /etc/apt/sources.list && \
@@ -31,4 +33,6 @@ RUN if [ -f /usr/local/bin/composer ]; then \
 
 ENV PATH="/usr/local/bin:$PATH"
 
-RUN git config --global --add safe.directory /app
+RUN git config --global --add safe.directory "$WORKDIR_PATH"
+
+WORKDIR "$WORKDIR_PATH"
