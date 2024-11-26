@@ -73,7 +73,8 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         $this->guzzleClientMock = $this->getMockBuilder(GuzzleClient::class) // Updated mock creation for PHPUnit 4.8
             ->disableOriginalConstructor()
-                ->getMock();
+            ->setMethods(['post'])
+            ->getMock();
 
         $this->client = new Client('https://api.example.com');
         $this->client->setClient($this->guzzleClientMock);
