@@ -8,7 +8,7 @@ use stdClass;
 
 class Client
 {
-    private const HTML_TO_PDF_ENDPOINT = '/convert';
+    private const HTML_TO_PDF_ENDPOINT = '/download';
 
     private GuzzleHttpClient $client;
 
@@ -38,7 +38,7 @@ class Client
                 'json' => $requestPayload,
                 'headers' => [
                     'X-caller-service' => $callerService,
-                    'Accept' => 'application/pdf',
+                    'Accept' => 'application/json',
                     'Content-Type' => 'application/json',
                 ]
             ]
