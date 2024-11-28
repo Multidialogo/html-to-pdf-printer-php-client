@@ -25,7 +25,7 @@ class Client
     public function getHtmlAsPdfStream(
         string $callerService,
         string $htmlBody
-    )
+    ): string
     {
         $requestPayload = new stdClass();
         $requestPayload->data = new stdClass();
@@ -46,16 +46,6 @@ class Client
 
         $responseData = json_decode($response->getBody()->getContents());
 
-        $filePath = $responseData->data->attributes->sharedFilePath;
-
-        if (!file_exists($filePath)) {
-            throw new RuntimeException("Missing file @ {$filePath}");
-        }
-
-        if (!$handle = fopen($filePath, 'rb')) {
-            throw new RuntimeException("Unable to open file @ {$filePath}");
-        }
-
-        return $handle;
+        return $responseData->data->attributes->sharedFilePath;
     }
 }
